@@ -18,13 +18,17 @@ const Scaffold = ({ odd }) => {
     console.log('Fetched tweets');
   }, []);
 
+  useEffect(() => {
+    getMoreData();
+  }, [filtered]);
+
   const fetchTweets = async () => {
     fetch('https://gist.githubusercontent.com/favalosdev/be710f1fc60ff42ce8d3c59171f23c1b/raw/25cea926d46d7dc9e70def4f699c0437e04fb1c5/reduced_test_tweets.json')
       .then((response) => {
         console.log('Response', response);
         response.json()
           .then((data) => {
-            console.log('Data',data);
+            console.log('Data',data['id']);
             setFiltered(data['id']);  
           })
           .catch((e)=>{
@@ -41,8 +45,7 @@ const Scaffold = ({ odd }) => {
       setTweets(tweets.concat(filtered.slice(index, index + PAGE_SIZE)));
       if (index + PAGE_SIZE < filtered.length) {
         setIndex(index + PAGE_SIZE);
-      }
-      else{
+      } else{
         setIndex(filtered.length);
       }
     }

@@ -13,19 +13,18 @@ const Scaffold = ({ data, filter, column, title }) => {
   const [filtered, setFiltered] = useState(null);
   const [index, setIndex] = useState(PAGE_SIZE);
   const [buttonEnabled, setButtonEnabled] = useState(false);
-  useEffect(() => {
-    fetchTweets();
-    console.log('Fetched tweets');
-  }, []);
 
-  const fetchTweets = async () => {
+  useEffect(() => {
     let preFiltered = data.filter(element => {return element[filter] == 1 && element['apoyo']==column;});
+    console.log('pre',preFiltered);
     setFiltered(preFiltered);
     setTweets(preFiltered.slice(0, PAGE_SIZE));
     setTimeout(() => {
       setButtonEnabled(true);
     }, 3000);
-  };
+    console.log('Fetched tweets');
+  }, [filter]);
+
 
   function getMoreData() {
     setButtonEnabled(false);
@@ -47,12 +46,13 @@ const Scaffold = ({ data, filter, column, title }) => {
     if (tweets) {
       return (
         <div>
-          {tweets.map((id, idx) => {
+          {tweets.map((tweet, idx) => {
             return (
               <div className='px-5 py-1' key={idx}>
                 <TwitterTweetEmbed
-                  tweetId={id}
+                  tweetId={tweet.id}
                 />
+                <p>{tweet.id}</p>
               </div>
             );
           })}
@@ -62,7 +62,12 @@ const Scaffold = ({ data, filter, column, title }) => {
   }
 
   function boton() {
-    if (buttonEnabled) {
+    if (index>=filtered.length){
+      return (
+        <h3>Se han cargado todos los Tweets</h3>
+      );
+    }
+    else if (buttonEnabled) {
       return (
         <button className='btn btn-primary my-2 mx-2' onClick={getMoreData}>
           Cargar más Tweets

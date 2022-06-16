@@ -24,7 +24,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch('https://gist.githubusercontent.com/favalosdev/be710f1fc60ff42ce8d3c59171f23c1b/raw/25cea926d46d7dc9e70def4f699c0437e04fb1c5/reduced_test_tweets.json')
+    fetch('https://obsdemocracia.s3.amazonaws.com/testing.json')
       .then((response) => {
         response.json()
           .then((data) => {

@@ -62,7 +62,7 @@ const Scaffold = ({ data, filter, column, title }) => {
   }
 
   function boton() {
-    if (index>=filtered.length){
+    if (filtered && index>=filtered.length){
       return (
         <h3>Se han cargado todos los Tweets</h3>
       );

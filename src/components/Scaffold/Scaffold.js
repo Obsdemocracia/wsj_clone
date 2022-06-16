@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Tweet from '../Tweet/Tweet';
 import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
 // import Tweet from '../Tweet/Tweet';
 
@@ -15,14 +14,23 @@ const Scaffold = ({ data, filter, column, title }) => {
   const [buttonEnabled, setButtonEnabled] = useState(false);
 
   useEffect(() => {
-    let preFiltered = data.filter(element => {return element[filter] == 1 && element['apoyo']==column;});
-    console.log('pre',preFiltered);
+    let preFiltered = data.filter(element => { return element[filter] == 1 && element['apoyo'] == column; });
     setFiltered(preFiltered);
-    setTweets(preFiltered.slice(0, PAGE_SIZE));
+    setIndex(PAGE_SIZE);
+    setButtonEnabled(false);
+    if (tweets){
+      setTweets(null);
+      setTimeout(() => {
+        setTweets(preFiltered.slice(0, PAGE_SIZE));
+      }, 500);
+    }
+    else{
+      setTweets(preFiltered.slice(0, PAGE_SIZE));
+    }
     setTimeout(() => {
       setButtonEnabled(true);
-    }, 3000);
-    console.log('Fetched tweets');
+    }, 3500);
+    console.log('Cambio categoria', tweets);
   }, [filter]);
 
 
@@ -45,26 +53,26 @@ const Scaffold = ({ data, filter, column, title }) => {
   function show() {
     if (tweets) {
       return (
-        <div>
-          {tweets.map((tweet, idx) => {
-            return (
-              <div className='px-5 py-1' key={idx}>
-                <TwitterTweetEmbed
-                  tweetId={tweet.id}
-                />
-                <p>{tweet.id}</p>
-              </div>
-            );
-          })}
-        </div>
+        tweets.map((tweet, idx) => {
+          return (
+            <div className='px-5 py-1' key={idx}>
+              <TwitterTweetEmbed
+                tweetId={tweet.id}
+              />
+            </div>
+          );
+        })
       );
+    }
+    else{
+      return <></>;
     }
   }
 
   function boton() {
-    if (filtered && index>=filtered.length){
+    if (filtered && index >= filtered.length) {
       return (
-        <h3>Se han cargado todos los Tweets</h3>
+        <h4>Se han cargado todos los Tweets</h4>
       );
     }
     else if (buttonEnabled) {

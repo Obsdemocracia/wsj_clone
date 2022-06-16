@@ -24,7 +24,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch('https://obsdemocracia.s3.amazonaws.com/testing.json')
+    fetch('https://obsdemocracia.s3.amazonaws.com/tweetsv5.json')
       .then((response) => {
         response.json()
           .then((data) => {

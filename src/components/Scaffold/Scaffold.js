@@ -5,7 +5,7 @@ import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterH
 
 
 // eslint-disable-next-line no-unused-vars
-const Scaffold = ({ odd }) => {
+const Scaffold = ({ data, filter, column, title }) => {
 
   const PAGE_SIZE = 5;
 
@@ -19,23 +19,12 @@ const Scaffold = ({ odd }) => {
   }, []);
 
   const fetchTweets = async () => {
-    fetch('https://gist.githubusercontent.com/favalosdev/be710f1fc60ff42ce8d3c59171f23c1b/raw/25cea926d46d7dc9e70def4f699c0437e04fb1c5/reduced_test_tweets.json')
-      .then((response) => {
-        response.json()
-          .then((data) => {
-            setFiltered(data['id']);
-            setTweets(data['id'].slice(0, PAGE_SIZE));
-            setTimeout(() => {
-              setButtonEnabled(true);
-            }, 3000);
-          })
-          .catch((e) => {
-            console.log('error', e);
-          });
-      })
-      .catch((e) => {
-        console.log('error', e);
-      });
+    let preFiltered = data.filter(element => {return element[filter] == 1 && element['apoyo']==column;});
+    setFiltered(preFiltered);
+    setTweets(preFiltered.slice(0, PAGE_SIZE));
+    setTimeout(() => {
+      setButtonEnabled(true);
+    }, 3000);
   };
 
   function getMoreData() {
@@ -88,7 +77,7 @@ const Scaffold = ({ odd }) => {
   }
 
   return (
-    <>{show()}{boton()}</>
+    <><h2>{title}</h2>{show()}{boton()}</>
   );
 };
 

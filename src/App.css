@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.link-like {
+  background-color: transparent !important;
+  color:rgba(0,0,0,.5) !important;
+}
+
+.link-like-active {
+  background-color: transparent !important;
+  color:blue !important;
+}
+
+.link-like:hover {
+  color: rgba(0,0,0,.7) !important;
+}

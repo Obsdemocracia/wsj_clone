@@ -2,27 +2,21 @@ import React, { useState } from 'react';
 
 // Pending: just for readability, nothing else
 
-const Navbar = () => {
+export const CATEGORIES = {
+  'genero': 'Género',
+  'paz': 'Paz',
+  'protesta': 'Protesta',
+  'tributaria': 'Reforma tributaria',
+  'mineroenergetico': 'Minería y energía',
+  'instituciones y democracia': 'Instituciones y democracia',
+  'seguridad social': 'Seguridad social',
+  'venezuela': 'Venezuela',
+  'corrupcion': 'Corrupción',
+  'educacion': 'Educación',
+  'pobreza y desigualdad': 'Pobreza y desigualdad'
+};
 
-  const CATEGORIES = {
-    'genero': 'Género',
-    'paz': 'Paz',
-    'protesta': 'Protesta',
-    'tributaria': 'Reforma tributaria',
-    'mineroenergetico': 'Minería y energía',
-    'instituciones y democracia': 'Instituciones y democracia',
-    'seguridad social': 'Seguridad social',
-    'venezuela': 'Venezuela',
-    'corrupcion': 'Corrupción',
-    'educacion': 'Educación',
-    'pobreza y desigualdad': 'Pobreza y desigualdad'
-  };
-
-  const [chosenCategory, chooseCategory] = useState(Object.keys(CATEGORIES)[0]);
-
-  const changeCategory = event => {
-    chooseCategory(event.target.id);
-  };
+const Navbar = ( chosenCategory, changeCategory ) => {
 
   return (
     <>

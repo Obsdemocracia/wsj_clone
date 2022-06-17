@@ -2,25 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 import './App.css';
 import Scaffold from './components/Scaffold/Scaffold';
-import Navbar from './components/Navbar/Navbar';
+import Navbar, { CATEGORIES } from './components/Navbar/Navbar';
 
 function App() {
 
-  const CATEGORIES = {
-    'genero': 'Género',
-    'paz': 'Paz',
-    'protesta': 'Protesta',
-    'tributaria': 'Reforma tributaria',
-    'mineroenergetico': 'Minería y energía',
-    'instituciones y democracia': 'Instituciones y democracia',
-    'seguridad social': 'Seguridad social',
-    'venezuela': 'Venezuela',
-    'corrupcion': 'Corrupción',
-    'educacion': 'Educación',
-    'pobreza y desigualdad': 'Pobreza y desigualdad'
-  };
-
   const [data, setData] = useState([]);
+  const [chosenCategory, chooseCategory] = useState(Object.keys(CATEGORIES)[0]);
+
+  const changeCategory = (event) => {
+    chooseCategory(event.target.id);
+  };
 
   useEffect(() => {
     fetch('https://obsdemocracia.s3.amazonaws.com/tweetsv5.json')
@@ -77,7 +68,10 @@ function App() {
         <div className="row mb-3">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-              <Navbar/>
+              <Navbar
+                chosenCategory={chosenCategory}
+                changeCategory={changeCategory}
+              />
             </div>
           </nav>
         </div>

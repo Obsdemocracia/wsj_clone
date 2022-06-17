@@ -1,96 +1,63 @@
 import React, { useState, useEffect } from 'react';
-import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
-// import Tweet from '../Tweet/Tweet';
+import { TwitterTweetEmbed } from 'react-twitter-embed';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
-
-// eslint-disable-next-line no-unused-vars
-const Scaffold = ({ data, filter, column, title }) => {
-
+const Scaffold = ({ data, filter, title }) => {
   const PAGE_SIZE = 5;
-
-  const [tweets, setTweets] = useState(null);
-  const [filtered, setFiltered] = useState(null);
-  const [index, setIndex] = useState(PAGE_SIZE);
-  const [buttonEnabled, setButtonEnabled] = useState(false);
+  
+  const [filtered, setFiltered] = useState([]);
+  const [tweets, setTweets] = useState([]);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    let preFiltered = data.filter(element => { return element[filter] == 1 && element['apoyo'] == column; });
-    setFiltered(preFiltered);
+    setFiltered(data.filter(element => element[filter] === 1));
     setIndex(PAGE_SIZE);
-    setButtonEnabled(false);
-    if (tweets){
-      setTweets(null);
-      setTimeout(() => {
-        setTweets(preFiltered.slice(0, PAGE_SIZE));
-      }, 500);
-    }
-    else{
-      setTweets(preFiltered.slice(0, PAGE_SIZE));
-    }
-    setTimeout(() => {
-      setButtonEnabled(true);
-    }, 3500);
-    console.log('Cambio categoria', tweets);
+    setTweets(filtered.slice(0, index));
   }, [filter]);
 
-
-  function getMoreData() {
-    setButtonEnabled(false);
-    if (filtered && index < filtered.length) {
-      setTweets(tweets.concat(filtered.slice(index, index + PAGE_SIZE)));
-      if (index + PAGE_SIZE < filtered.length) {
-        setIndex(index + PAGE_SIZE);
-      } else {
-        setIndex(filtered.length);
-      }
+  const getMoreTweets = () => {
+    setTweets(filtered.slice(0, index + PAGE_SIZE));
+  };
+  
+  const show = () => {
+    if (tweets.length > 0) {
+      <div
+        id="scrollableDiv"
+        style={{
+          height: 300,
+          overflow: 'auto',
+          display: 'flex',
+          flexDirection: 'column-reverse',
+        }}
+      >
+        <InfiniteScroll
+          dataLength={tweets.length}
+          next={getMoreTweets}
+          style={{ display: 'flex', flexDirection: 'column-reverse' }}
+          inverse={true}
+          hasMore={true}
+          loader={<h4> Cargando más tuits... </h4>}
+          scrollableTarget="scrollableDiv"
+        >
+          {tweets.map((tweet, idx) => {
+            <div className="px-5 py-1" key={idx}>
+              <TwitterTweetEmbed tweetId={tweet.id}/>
+            </div>;
+          })}
+        </InfiniteScroll>
+      </div>;
+    } else {
+      <h4> Cargando tuits... </h4>;
     }
-    setTimeout(() => {
-      setButtonEnabled(true);
-    }, 3000);
-    console.log('Loaded', tweets);
-  }
-
-  function show() {
-    if (tweets) {
-      return (
-        tweets.map((tweet, idx) => {
-          return (
-            <div className='px-5 py-1' key={idx}>
-              <TwitterTweetEmbed
-                tweetId={tweet.id}
-              />
-            </div>
-          );
-        })
-      );
-    }
-    else{
-      return <></>;
-    }
-  }
-
-  function boton() {
-    if (filtered && index >= filtered.length) {
-      return (
-        <h4>Se han cargado todos los Tweets</h4>
-      );
-    }
-    else if (buttonEnabled) {
-      return (
-        <button className='btn btn-primary my-2 mx-2' onClick={getMoreData}>
-          Cargar más Tweets
-        </button>
-      );
-    }
-    else {
-      return (
-        <h3>Cargando...</h3>
-      );
-    }
-  }
+  };
 
   return (
-    <><h2>{title}</h2>{show()}{boton()}</>
+    <>
+      <h2>
+        {title}
+      </h2>
+      {show()}
+    </>
   );
 };
 

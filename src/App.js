@@ -6,7 +6,7 @@ import Navbar from './components/Navbar/Navbar';
 
 function App() {
 
-  const categories = {
+  const CATEGORIES = {
     'genero': 'Género',
     'paz': 'Paz',
     'protesta': 'Protesta',
@@ -20,8 +20,7 @@ function App() {
     'pobreza y desigualdad': 'Pobreza y desigualdad'
   };
 
-  const [data, setData] = useState(null);
-  const [category, setCategory] = useState(Object.keys(categories)[0]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     fetch('https://obsdemocracia.s3.amazonaws.com/tweetsv5.json')
@@ -39,12 +38,8 @@ function App() {
       });
   }, []);
 
-  const changeCategory = (event) => {
-    setCategory(event.target.id);
-  };
-
   function show() {
-    if (data) {
+    if (data.length > 0) {
       const leftData = data.filter(element => element['apoyo'] === 'petro');
       const rightData = data.filter(element => element['apoyo'] === 'rodolfo');
 
@@ -53,13 +48,13 @@ function App() {
           <div className="col-6 px-1">
             <Scaffold
               data={leftData}
-              filter={category}
+              filter={chosenCategory}
               title={'Petristas'}/>
           </div>
           <div className="col-6 px-1">
             <Scaffold
               data={rightData}
-              filter={category}
+              filter={chosenCategory}
               title={'Rodolfistas'}/>
           </div>
         </div>
@@ -82,29 +77,7 @@ function App() {
         <div className="row mb-3">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-              <div className="navbar-brand"> Categoria </div>
-              <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                  {Object.keys(categories).map((c, idx) => {
-                    let active = '';
-
-                    if (c == category) {
-                      active = '-active';
-                    }
-
-                    return (
-                      <li key={idx} className="nav-item">
-                        <button
-                          className={`nav-link active btn-outline-light border-0 link-like${active}`}
-                          onClick={changeCategory}
-                          id={category}>
-                          {categories[c]}
-                        </button>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+              <Navbar/>
             </div>
           </nav>
         </div>

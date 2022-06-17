@@ -12,7 +12,9 @@ const Scaffold = ({ data, filter, title }) => {
   useEffect(() => {
     setFiltered(data.filter(element => element[filter] === 1));
     setIndex(PAGE_SIZE);
-    setTweets(filtered.slice(0, index));
+    let tweets = filtered.slice(0, index);
+    setTweets(tweets);
+    console.log(tweets);
   }, [filter]);
 
   const getMoreTweets = () => {
@@ -20,34 +22,40 @@ const Scaffold = ({ data, filter, title }) => {
   };
   
   const show = () => {
+    console.log('Entering show() function...');
+    console.log('Tweets currently are: ', tweets);
     if (tweets.length > 0) {
-      <div
-        id="scrollableDiv"
-        style={{
-          height: 300,
-          overflow: 'auto',
-          display: 'flex',
-          flexDirection: 'column-reverse',
-        }}
-      >
-        <InfiniteScroll
-          dataLength={tweets.length}
-          next={getMoreTweets}
-          style={{ display: 'flex', flexDirection: 'column-reverse' }}
-          inverse={true}
-          hasMore={true}
-          loader={<h4> Cargando más tuits... </h4>}
-          scrollableTarget="scrollableDiv"
+      return (
+        <div
+          id="scrollableDiv"
+          style={{
+            height: 300,
+            overflow: 'auto',
+            display: 'flex',
+            flexDirection: 'column-reverse',
+          }}
         >
-          {tweets.map((tweet, idx) => {
-            <div className="px-5 py-1" key={idx}>
-              <TwitterTweetEmbed tweetId={tweet.id}/>
-            </div>;
-          })}
-        </InfiniteScroll>
-      </div>;
+          <InfiniteScroll
+            dataLength={tweets.length}
+            next={getMoreTweets}
+            style={{ display: 'flex', flexDirection: 'column-reverse' }}
+            inverse={true}
+            hasMore={true}
+            loader={<h4> Cargando más tuits... </h4>}
+            scrollableTarget="scrollableDiv"
+          >
+            {tweets.map((tweet, idx) => {
+              <div className="px-5 py-1" key={idx}>
+                <TwitterTweetEmbed tweetId={tweet.id}/>
+              </div>;
+            })}
+          </InfiniteScroll>
+        </div>
+      );
     } else {
-      <h4> Cargando tuits... </h4>;
+      return (
+        <h4> Cargando tuits... </h4>
+      );
     }
   };
 

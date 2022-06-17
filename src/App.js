@@ -98,7 +98,7 @@ function App() {
                           className={`nav-link active btn-outline-light border-0 link-like${active}`}
                           onClick={changeCategory}
                           id={category}>
-                            categories[category]
+                          {categories[c]}
                         </button>
                       </li>
                     );

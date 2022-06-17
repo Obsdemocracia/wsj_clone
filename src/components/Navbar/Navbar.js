@@ -34,7 +34,7 @@ const Navbar = ( chosenCategory, changeCategory ) => {
               <li key={idx} className="nav-item">
                 <button
                   className={`nav-link active btn-outline-light border-0 link-like${active}`}
-                  onClick={changeCategory}
+                  onClick={() => changeCategory}
                   id={category}>
                   {CATEGORIES[category]}
                 </button>

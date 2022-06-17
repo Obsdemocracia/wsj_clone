@@ -9,7 +9,7 @@ function App() {
   const [data, setData] = useState([]);
   const [chosenCategory, chooseCategory] = useState(Object.keys(CATEGORIES)[0]);
 
-  const changeCategory = (event) => {
+  const changeCategory = event => {
     chooseCategory(event.target.id);
   };
 

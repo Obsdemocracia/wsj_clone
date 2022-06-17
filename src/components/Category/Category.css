@@ -1,0 +1,12 @@
+button {
+  border: 1px;
+  margin: 10px;
+}
+button .slate {
+  background-color: yellow;
+  color: black;
+}
+button .highlighted {
+  background-color: black;
+  color: white;
+}/*# sourceMappingURL=Category.css.map */

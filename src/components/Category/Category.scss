@@ -1,0 +1,14 @@
+button {
+  border: 1px;
+  margin: 10px;
+
+  .slate {
+    background-color: yellow;
+    color: black;
+  }
+
+  .highlighted {
+    background-color: black;
+    color: white;
+  }
+}

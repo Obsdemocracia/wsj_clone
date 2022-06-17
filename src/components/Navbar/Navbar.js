@@ -1,48 +1,39 @@
 import React, { useState } from 'react';
+import './Navbar.scss';
+import Category from '../Category/Category';
+
+import { CATEGORIES } from '../Category/Category';
 
 // Pending: just for readability, nothing else
-
-export const CATEGORIES = {
-  'genero': 'Género',
-  'paz': 'Paz',
-  'protesta': 'Protesta',
-  'tributaria': 'Reforma tributaria',
-  'mineroenergetico': 'Minería y energía',
-  'instituciones y democracia': 'Instituciones y democracia',
-  'seguridad social': 'Seguridad social',
-  'venezuela': 'Venezuela',
-  'corrupcion': 'Corrupción',
-  'educacion': 'Educación',
-  'pobreza y desigualdad': 'Pobreza y desigualdad'
-};
-
-const Navbar = ( chosenCategory, changeCategory ) => {
+const Navbar = ( chosenCategory, onClickCallback ) => {
 
   return (
     <>
-      <div className="navbar-brand"> Categoria </div>
-      <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav">
-          {Object.keys(CATEGORIES).map((category, idx) => {
-            let active = '';
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              {Object.keys(CATEGORIES).map((category, idx) => {
+                let highlighted = false;
 
-            if (category === chosenCategory) {
-              active = '-active';
-            }
+                if (category == chosenCategory) {
+                  highlighted = true;
+                }
 
-            return (
-              <li key={idx} className="nav-item">
-                <button
-                  className={`nav-link active btn-outline-light border-0 link-like${active}`}
-                  onClick={() => changeCategory}
-                  id={category}>
-                  {CATEGORIES[category]}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+                return (
+                  <li key={idx} className="nav-item">
+                    <Category
+                      name={category}
+                      onClickCallback={onClickCallback}
+                      highlighted={highlighted}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      </nav>
     </>
   );
 };

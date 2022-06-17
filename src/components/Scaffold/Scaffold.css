@@ -1,0 +1,28 @@
+.scaffold-body, #scrollableDiv-right, #scrollableDiv-left {
+  font-size: 16px;
+  cursor: pointer;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+#scrollableDiv-left {
+  background-color: #621f67;
+  text-align: left;
+  border-color: #ffffff;
+}
+#scrollableDiv-left h4 {
+  color: white;
+}
+
+#scrollableDiv-right {
+  background-color: #fed32d;
+  text-align: right;
+  border-color: #ffffff;
+}
+#scrollableDiv-right h4 {
+  color: #2A3D59;
+}/*# sourceMappingURL=Scaffold.css.map */

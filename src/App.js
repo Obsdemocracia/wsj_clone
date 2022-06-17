@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import './App.css';
 import Scaffold from './components/Scaffold/Scaffold';
-import Navbar, { CATEGORIES } from './components/Navbar/Navbar';
+import Navbar from './components/Navbar/Navbar';
+import { CATEGORIES } from './components/Category/Category';
+import './App.scss';
 
 function App() {
 
@@ -40,13 +41,17 @@ function App() {
             <Scaffold
               data={leftData}
               filter={chosenCategory}
-              title={'Petristas'}/>
+              title="PETRO"
+              leaning="left"
+            />
           </div>
           <div className="col-6 px-1">
             <Scaffold
               data={rightData}
               filter={chosenCategory}
-              title={'Rodolfistas'}/>
+              title="RODOLFO"
+              leaning="right"
+            />
           </div>
         </div>
       );

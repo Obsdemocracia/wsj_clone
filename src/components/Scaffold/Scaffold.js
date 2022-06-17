@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import shuffle from '../../utils/shuffle';
 
-const Scaffold = ({ data, filter, title }) => {
+import './Scaffold.scss';
+
+const Scaffold = ({ data, filter, title, leaning }) => {
   const PAGE_SIZE = 5;
   
   const [filtered, setFiltered] = useState([]);
@@ -11,6 +14,7 @@ const Scaffold = ({ data, filter, title }) => {
 
   useEffect(() => {
     let preFiltered = data.filter(element => element[filter] === 1);
+    shuffle(preFiltered);
     setFiltered(preFiltered);
     setIndex(PAGE_SIZE);
     setTweets(preFiltered.slice(0, PAGE_SIZE));
@@ -26,18 +30,8 @@ const Scaffold = ({ data, filter, title }) => {
   
   const show = () => {
     if (tweets.length > 0) {
-      console.log(tweets);
-
       return (
-        <div
-          id="scrollableDiv"
-          style={{
-            height: 700,
-            overflow: 'auto',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
+        <div id={`scrollableDiv-${leaning}`}>
           <InfiniteScroll
             dataLength={tweets.length}
             next={getMoreTweets}
@@ -50,8 +44,9 @@ const Scaffold = ({ data, filter, title }) => {
                 <b> ¡Has llegado al final de los tuits! </b>
               </p>
             }
-            scrollableTarget="scrollableDiv"
+            scrollableTarget={`scrollableDiv-${leaning}`}
           >
+            <h4> {title} </h4>
             {tweets.map((tweet, idx) => {
               return (
                 <div className='px-5 py-1' key={idx}>
@@ -67,9 +62,6 @@ const Scaffold = ({ data, filter, title }) => {
 
   return (
     <>
-      <h2>
-        {title}
-      </h2>
       {show()}
     </>
   );

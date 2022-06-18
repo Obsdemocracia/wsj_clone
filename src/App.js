@@ -5,11 +5,18 @@ import Selector from './components/Selector/Selector';
 import { CATEGORIES } from './utils/constants';
 import './App.scss';
 
+import Modal from 'react-bootstrap/Modal';
+
 function App() {
 
   const [leftData, setLeftData] = useState([]);
   const [rightData, setRightData] = useState([]);
   const [category, setCategory] = useState(Object.keys(CATEGORIES)[0]);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const changeCategory = (category) => {
     setCategory(category);
@@ -32,7 +39,7 @@ function App() {
       });
   }, []);
 
-  function show() {
+  function renderScaffolds() {
     if (leftData.length > 0 && rightData.length > 0) {
       const leftFiltered = leftData.filter(element => element[category] === 1);
       const rightFiltered = rightData.filter(element => element[category] === 1);
@@ -75,6 +82,43 @@ function App() {
           <h2 id="mainTitle">
             ¿Qué dijeron en Twitter los senadores electos que cantaron su apoyo en la 2a. vuelta presidencial?
           </h2>
+          <div id="credits">
+            <span> HECHO POR GRUPO </span> <span id="groupName" onClick={handleShow}> POLÍTICA & DATOS </span>
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Body>
+                Este ejercicio fue realizado por el semillero de ciencia de datos para el análisis de opinión
+                pública del Observatorio de la Democracia de la Universidad de los Andes inspirado en la
+                siguiente <a href="https://graphics.wsj.com/blue-feed-red-feed/#/president-trump">página web</a>. Encuentre
+                el código del proyecto <a href="https://github.com/Obsdemocracia/wsj_clone">aquí</a>.
+                <hr/>
+                <h6> Equipo: </h6>
+                <ul>
+                  <li>
+                    Fernando Avalos
+                  </li>
+                  <li>
+                    Esteban Leiva
+                  </li>
+                  <li>
+                    Andrés Martínez
+                  </li>
+                  <li>
+                    Valentina Suárez
+                  </li>
+                  <li>
+                    Juan José Corredor
+                  </li>
+                  <li>
+                    Laura Fernanda Cely
+                  </li>
+                  <li>
+                    Juan Carlos Rodríguez Raga
+                  </li>
+                </ul>
+              </Modal.Body>
+            </Modal>
+          </div>
+          <hr/>
         </div>
         <div className="row mb-3">
           <p>
@@ -87,7 +131,7 @@ function App() {
           <hr/>
           <p>
             Esta herramienta muestra los tuits que publicaron entre el 12 de enero y el 29 de mayo de 2022 los
-            senadores electos al Congreso de la República. Los tuits están divididos de acuerdo con temáticas más
+            senadores electos al Congreso de la República. Los tuits y retuits están divididos de acuerdo con temáticas más
             relevantes en la campaña. Ellos son muestra de las agendas que promovieron y con las que fueron elegidos. 
           </p>
           <hr/>
@@ -100,7 +144,7 @@ function App() {
           />
         </div>
         <div></div>
-        {show()}
+        {renderScaffolds()}
       </div>
     </div>
   );

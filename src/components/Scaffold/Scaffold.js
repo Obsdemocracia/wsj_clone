@@ -6,7 +6,7 @@ import shuffle from '../../utils/shuffle';
 import './Scaffold.scss';
 
 const Scaffold = ({ data, title, leaning, filter }) => {
-  const PAGE_SIZE = 5;
+  const PAGE_SIZE = 15;
   
   const [tweets, setTweets] = useState([]);
 
@@ -16,7 +16,6 @@ const Scaffold = ({ data, title, leaning, filter }) => {
   }, [filter]);
 
   const getMoreTweets = () => {
-    console.log('Getting more tweets...');
     setTweets(data.slice(0, tweets.length + PAGE_SIZE));
   };
   
@@ -26,11 +25,14 @@ const Scaffold = ({ data, title, leaning, filter }) => {
         <InfiniteScroll
           dataLength={tweets.length}
           next={getMoreTweets}
+          style={{
+            display: 'flex',
+            flexDirection: 'column'
+          }}
           hasMore={true}
           loader={<p> Cargando tweets </p>}
           scrollableTarget="scrollableDiv"
         >
-          <h4 id="name"> {title} </h4>
           {tweets.map((tweet, idx) => {
             let tweetId = tweet['id'];
 
@@ -50,8 +52,17 @@ const Scaffold = ({ data, title, leaning, filter }) => {
   };
 
   return(
-    <div id="scrollableDiv">
-      <div id={`tower-${leaning}`}>
+    <div id={`tower-${leaning}`}>
+      <h4 id="name"> {title} </h4>
+      <div
+        id="scrollableDiv"
+        style={{
+          height: 700,
+          overflow: 'auto',
+          display: 'flex',
+          flexDirection: 'column'
+        }}
+      >
         {renderTweets()}
       </div>
     </div>

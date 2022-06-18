@@ -67,7 +67,22 @@
   color: darkslategray;
 }
 
+#credits {
+
+  span {
+    font-size: 12px;
+    text-align: center;
+    font-weight: 300;
+    color: darkslategrey;
+  }
+}
+
 p {
   font-family: $corpus-font;
   text-align: justify;
+}
+
+#groupName {
+  cursor: pointer;
+  text-decoration: underline;
 }

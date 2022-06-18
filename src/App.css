@@ -72,7 +72,19 @@
   color: darkslategray;
 }
 
+#credits span {
+  font-size: 12px;
+  text-align: center;
+  font-weight: 300;
+  color: darkslategrey;
+}
+
 p {
   font-family: "Open Sans", sans-serif;
   text-align: justify;
+}
+
+#groupName {
+  cursor: pointer;
+  text-decoration: underline;
 }/*# sourceMappingURL=App.css.map */

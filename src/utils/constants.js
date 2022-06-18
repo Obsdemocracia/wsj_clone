@@ -2,7 +2,7 @@ export const CATEGORIES = {
   'genero': 'Género',
   'paz': 'Paz',
   'protesta': 'Protesta',
-  'tributaria': 'Reforma tributaria',
+  'tributaria': 'Tributario',
   'mineroenergetico': 'Energía',
   'instituciones y democracia': 'Democracia',
   'seguridad social': 'Seguridad social',

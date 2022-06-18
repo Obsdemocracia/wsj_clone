@@ -132,7 +132,7 @@ function App() {
           </p>
           <hr />
           <p>
-            Esta herramienta muestra los tuits que publicaron entre el 12 de enero y el 29 de mayo de 2022 los
+            Esta herramienta muestra los tuits y retuits que publicaron entre el 12 de enero y el 29 de mayo de 2022 los
             senadores electos al Congreso de la República. Los tuits y retuits están divididos de acuerdo con temáticas más
             relevantes en la campaña. Ellos son muestra de las agendas que promovieron y con las que fueron elegidos.
           </p>

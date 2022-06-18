@@ -47,21 +47,23 @@ function App() {
       return (
         <>
           <div className="row">
-            <div className="col-6 pl-1 ml-2">
+            <div className="col-lg-6 col-md-6 col-sm-12 col-12">
               <Scaffold
                 data={leftFiltered}
                 title="PETRO"
                 leaning="left"
                 filter={category}
               />
+              <br/>
             </div>
-            <div className="col-6 px-1 mr-2">
+            <div className="col-lg-6 col-md-6 col-sm-12 col-12">
               <Scaffold
                 data={rightFiltered}
                 title="RODOLFO"
                 leaning="right"
                 filter={category}
               />
+              <br/>
             </div>
           </div>
         </>

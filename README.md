@@ -1,70 +1,18 @@
-# Getting Started with Create React App
+# ¿Qué dijeron en Twitter los senadores electos que cantaron su apoyo en la 2a. vuelta presidencial?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+El próximo 19 de junio Colombia elegirá presidente. Quien sea elegido tendrá que atender no solo a su agenda, sino también a las posturas relevantes para su bancada en el Congreso. Por esto, esta visualización divide a los senadores de acuerdo con el candidato presidencial que han declarado apoyar. Revisar las posturas de quienes probablemente serían bancada de gobierno muestra aquellas políticas que tendrían mayor posibilidad de concretarse en los próximos cuatro años.  
 
-## Available Scripts
+Esta herramienta muestra los tuits que publicaron entre el 12 de enero y el 29 de mayo de 2022 los senadores electos al Congreso de la República. Los tuits y retuits están divididos de acuerdo con temáticas más relevantes en la campaña. Ellos son muestra de las agendas que promovieron y con las que fueron elegidos.
 
-In the project directory, you can run:
+## Equipo:
+- Fernando Avalos
+- Esteban Leiva
+- Andrés Martínez
+- Valentina Suárez
+- Juan José Corredor
+- Laura Fernanda Cely
+- Juan Carlos Rodríguez Raga
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ [Acceder a la herramienta](https://main.d34h1hfs17zau5.amplifyapp.com).
+ 
+ ### Hecho por el grupo de Política & Redes de la Universidad de Los Andes, Colombia

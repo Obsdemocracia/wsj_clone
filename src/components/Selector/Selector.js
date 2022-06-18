@@ -1,5 +1,5 @@
 import React from 'react';
-import './Navbar.scss';
+import './Selector.scss';
 import Category from '../Category/Category';
 
 export const CATEGORIES = {
@@ -22,7 +22,7 @@ const Navbar = ({ chosenCategory, onClickCallback }) => {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="nav justify-content-center">
               {Object.keys(CATEGORIES).map((category, idx) => {
                 let highlighted = false;
 

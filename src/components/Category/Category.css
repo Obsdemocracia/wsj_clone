@@ -1,16 +1,19 @@
-button {
-  font-size: 4px;
-  color: aqua;
-}
-button .slate {
-  background-color: white;
-  border-radius: 5px;
-  color: black;
-  font-size: 13px;
-}
-button .highlighted {
-  background-color: black;
+.button {
+  margin: 5px;
+  font-size: 10px;
   border-radius: 10px;
+  border-color: #e6e6e6;
+  border-style: solid;
+  border-width: 2px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.highlighted {
+  background-color: darkslategrey;
   color: white;
-  font-size: 13px;
+}
+
+.slate {
+  background-color: white;
+  color: black;
 }/*# sourceMappingURL=Category.css.map */

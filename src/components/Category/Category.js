@@ -4,18 +4,18 @@ import './Category.scss';
 
 const Category = ({ name, highlighted, onClickCallback }) => {
   // Here we decide if the button shall be highlighted or not
-  let className = 'slate';
+  let status = 'slate';
 
   if (highlighted === true) {
-    className = 'highlighted';
+    status = 'highlighted';
   }
 
   return (
     <>
       <button
         id={name}
-        onClick={onClickCallback}
-        className={className}
+        onClick={(event) => onClickCallback(event.target.id)}
+        className={`button ${status}`}
       >
         {CATEGORIES[name].toUpperCase()}
       </button>

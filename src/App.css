@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #F8F9FA;
 }
 
 .App-logo {
@@ -57,4 +58,19 @@
 
 .link-like:hover {
   color: rgba(0, 0, 0, 0.7) !important;
+}
+
+#filterDescription {
+  font-size: 12px;
+  text-align: center;
+}
+
+#mainTitle {
+  font-family: "Oswald", sans-serif;
+  color: darkslategray;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+  text-align: justify;
 }/*# sourceMappingURL=App.css.map */

@@ -1,5 +1,8 @@
+@import './utils/variables';
+
 .App {
   text-align: center;
+  background-color: #F8F9FA;
 }
 
 .App-logo {
@@ -52,3 +55,17 @@
 }
 
 // Here we define colors of the campaign
+#filterDescription {
+  font-size: 12px;
+  text-align: center;
+}
+
+#mainTitle {
+  font-family: $titles-font;
+  color: darkslategray;
+}
+
+p {
+  font-family: $corpus-font;
+  text-align: justify;
+}

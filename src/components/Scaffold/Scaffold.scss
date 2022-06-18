@@ -1,20 +1,18 @@
 @import '../../utils/variables';
 
-.scaffold-body {
-  font-size: 16px;
-  cursor: pointer;
+#scrollableDiv {
+  height: 200;
   overflow: auto;
   display: flex;
   flex-direction: column;
 }
 
-#scrollableDiv-left {
-  @extend .scaffold-body;
+#tower-left {
   background-color: $left-color-primary;
   text-align: left;
   // border-color: $left-color-secondary;
 
-  h4 {
+  #name {
     color: white;
     font-size: 35px;
     padding-left: 20px;
@@ -23,13 +21,12 @@
   }
 }
 
-#scrollableDiv-right {
-  @extend .scaffold-body;
+#tower-right {
   background-color: $right-color-primary;
   text-align: right;
-  // border-color: $left-color-secondary;
+  padding-right: 2px;
 
-  h4 {
+  #name {
     color: #2A3D59;
     font-size: 35px;
     padding-right: 20px;

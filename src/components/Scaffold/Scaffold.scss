@@ -1,0 +1,32 @@
+@import '../../utils/variables';
+
+#tower-left {
+  background-color: $left-color-primary;
+  text-align: left;
+
+  #name {
+    color: white;
+    font-size: 35px;
+    padding-left: 20px;
+    padding-top: 30px;
+    font-style: normal;
+    font-weight: bold;
+    font-family: $left-font;
+  }
+}
+
+#tower-right {
+  background-color: $right-color-primary;
+  text-align: right;
+  padding-right: 2px;
+
+  #name {
+    color: #2A3D59;
+    font-size: 35px;
+    padding-right: 20px;
+    padding-top: 30px;
+    font-style: normal;
+    font-weight: bold;
+    font-family: $right-font;
+  }
+}

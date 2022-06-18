@@ -1,3 +1,5 @@
+@import './utils/variables';
+
 .App {
   text-align: center;
   background-color: #F8F9FA;
@@ -10,10 +12,10 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    -webkit-animation: App-logo-spin infinite 20s linear;
-            animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 20s linear;
   }
 }
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -29,15 +31,6 @@
   color: #61dafb;
 }
 
-@-webkit-keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -46,20 +39,22 @@
     transform: rotate(360deg);
   }
 }
+
 .link-like {
   background-color: transparent !important;
-  color: rgba(0, 0, 0, 0.5) !important;
+  color:rgba(0,0,0,.5) !important;
 }
 
 .link-like-active {
   background-color: transparent !important;
-  color: blue !important;
+  color:blue !important;
 }
 
 .link-like:hover {
-  color: rgba(0, 0, 0, 0.7) !important;
+  color: rgba(0,0,0,.7) !important;
 }
 
+// Here we define colors of the campaign
 #filterDescription {
   font-size: 12px;
   text-align: center;
@@ -68,23 +63,26 @@
 }
 
 #mainTitle {
-  font-family: "Oswald", sans-serif;
+  font-family: $titles-font;
   color: darkslategray;
 }
 
-#credits span {
-  font-size: 12px;
-  text-align: center;
-  font-weight: 300;
-  color: darkslategrey;
+#credits {
+
+  span {
+    font-size: 12px;
+    text-align: center;
+    font-weight: 300;
+    color: darkslategrey;
+  }
 }
 
 p {
-  font-family: "Open Sans", sans-serif;
+  font-family: $corpus-font;
   text-align: justify;
 }
 
 #groupName {
   cursor: pointer;
   text-decoration: underline;
-}/*# sourceMappingURL=App.css.map */
+}

@@ -1,0 +1,22 @@
+@import '../../utils/variables';
+
+.button {
+  margin: 5px;
+  font-size: 10px;
+  border-radius: 10px;
+  border-color: #e6e6e6;
+  border-style: solid;
+  border-width: 2px;
+  font-family: $corpus-font;
+}
+
+.highlighted {
+  // background-color: rgb(53, 191, 237);
+  background-color: darkslategrey;
+  color: white;
+}
+
+.slate {
+  background-color: white;
+  color: black;
+}

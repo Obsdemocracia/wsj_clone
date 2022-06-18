@@ -1,64 +1,74 @@
 import React, { useState, useEffect } from 'react';
 
-import './App.css';
 import Scaffold from './components/Scaffold/Scaffold';
+import Selector from './components/Selector/Selector';
+import { CATEGORIES } from './utils/constants';
+import './App.scss';
+
+import Modal from 'react-bootstrap/Modal';
 
 function App() {
 
-  const categorias = {
-    'genero': 'Genero',
-    'paz': 'Paz',
-    'protesta': 'Protesta',
-    'tributaria': 'Tributaria',
-    'mineroenergetico': 'Mineria y Energia',
-    'instituciones y democracia': 'Instituciones y Democracia',
-    'seguridad social': 'Seguridad Social',
-    'venezuela': 'Venezuela',
-    'corrupcion': 'Corrupcion',
-    'educacion': 'Educacion',
-    'pobreza y desigualdad': 'Pobreza y Desigualdad'
+  const [leftData, setLeftData] = useState([]);
+  const [rightData, setRightData] = useState([]);
+  const [category, setCategory] = useState(Object.keys(CATEGORIES)[0]);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const changeCategory = (category) => {
+    setCategory(category);
   };
-
-  const [data, setData] = useState(null);
-  const [categoria, setCategoria] = useState(Object.keys(categorias)[0]);
-
 
   useEffect(() => {
     fetch('https://obsdemocracia.s3.amazonaws.com/tweetsv5.json')
       .then((response) => {
         response.json()
           .then((data) => {
-            setData(data);
+            setLeftData(data.filter(element => element['apoyo'] === 'petro'));
+            setRightData(data.filter(element => element['apoyo'] === 'rodolfo'));
           })
           .catch((e) => {
-            console.log('error json', e);
+            console.log('Error while parsing json', e);
           });
       })
       .catch((e) => {
-        console.log('error fetch', e);
+        console.log('Error while fetching data', e);
       });
   }, []);
 
-  const cambiarCategoria = event => {
-    setCategoria(event.target.id);
-  };
+  function renderScaffolds() {
+    if (leftData.length > 0 && rightData.length > 0) {
+      const leftFiltered = leftData.filter(element => element[category] === 1);
+      const rightFiltered = rightData.filter(element => element[category] === 1);
 
-  function show() {
-    if (data) {
       return (
-        <div className='row'>
-          <div className='col-6 px-1'>
-            <Scaffold data={data} filter={categoria} column={'petro'} title={'Petristas'}/>
+        <>
+          <div className="row">
+            <div className="col-6 pl-1 ml-2">
+              <Scaffold
+                data={leftFiltered}
+                title="PETRO"
+                leaning="left"
+                filter={category}
+              />
+            </div>
+            <div className="col-6 px-1 mr-2">
+              <Scaffold
+                data={rightFiltered}
+                title="RODOLFO"
+                leaning="right"
+                filter={category}
+              />
+            </div>
           </div>
-          <div className='col-6 px-1'>
-            <Scaffold data={data} filter={categoria} column={'rodolfo'} title={'Rodolfistas'}/>
-          </div>
-        </div>
+        </>
       );
-    }
-    else {
+    } else {
       return (
-        <div className='row'>
+        <div className="row">
           <h3>Accediendo a la base de datos...</h3>
         </div>
       );
@@ -66,40 +76,75 @@ function App() {
   }
 
   return (
-    <div className='App'>
-      <div className='container'>
-        <div className='row my-2'>
-          <h1>Observatorio de la democracia</h1>
-        </div>
-        <div className='row mb-3'>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid">
-              <div className="navbar-brand">Categoria</div>
-              <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                  {Object.keys(categorias).map((category, idx) => {
-                    if (category == categoria) {
-                      return (
-                        <li key={idx} className="nav-item">
-                          <button className="nav-link active btn-outline-light border-0 link-like-active" onClick={cambiarCategoria} id={category}>{categorias[category]}</button>
-                        </li>
-                      );
-                    }
-                    else {
-                      return (
-                        <li key={idx} className="nav-item">
-                          <button className="nav-link active btn-outline-light border-0 link-like" onClick={cambiarCategoria} id={category}>{categorias[category]}</button>
-                        </li>
-                      );
-                    }
-                  })}
+    <div className="App">
+      <div className="container">
+        <div className="row my-2">
+          <h2 id="mainTitle">
+            ¿Qué dijeron en Twitter los senadores electos que cantaron su apoyo en la 2a. vuelta presidencial?
+          </h2>
+          <div id="credits">
+            <span> HECHO POR GRUPO </span> <span id="groupName" onClick={handleShow}> POLÍTICA & DATOS </span>
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Body>
+                Este ejercicio fue realizado por el semillero de ciencia de datos para el análisis de opinión
+                pública del Observatorio de la Democracia de la Universidad de los Andes inspirado en la
+                siguiente <a href="https://graphics.wsj.com/blue-feed-red-feed/#/president-trump">página web</a>. Encuentre
+                el código del proyecto <a href="https://github.com/Obsdemocracia/wsj_clone">aquí</a>.
+                <hr/>
+                <h6> Equipo: </h6>
+                <ul>
+                  <li>
+                    Fernando Avalos
+                  </li>
+                  <li>
+                    Esteban Leiva
+                  </li>
+                  <li>
+                    Andrés Martínez
+                  </li>
+                  <li>
+                    Valentina Suárez
+                  </li>
+                  <li>
+                    Juan José Corredor
+                  </li>
+                  <li>
+                    Laura Fernanda Cely
+                  </li>
+                  <li>
+                    Juan Carlos Rodríguez Raga
+                  </li>
                 </ul>
-              </div>
-            </div>
-          </nav>
-
+              </Modal.Body>
+            </Modal>
+          </div>
+          <hr/>
         </div>
-        {show()}
+        <div className="row mb-3">
+          <p>
+            El próximo 19 de junio Colombia elegirá presidente. Quien sea elegido tendrá que atender no solo a
+            su agenda, sino también a las posturas relevantes para su bancada en el Congreso. Por esto, esta
+            visualización divide a los senadores de acuerdo con el candidato presidencial que han declarado apoyar.
+            Revisar las posturas de quienes probablemente serían bancada de gobierno muestra aquellas políticas que
+            tendrían mayor posibilidad de concretarse en los próximos cuatro años.
+          </p>
+          <hr/>
+          <p>
+            Esta herramienta muestra los tuits que publicaron entre el 12 de enero y el 29 de mayo de 2022 los
+            senadores electos al Congreso de la República. Los tuits y retuits están divididos de acuerdo con temáticas más
+            relevantes en la campaña. Ellos son muestra de las agendas que promovieron y con las que fueron elegidos. 
+          </p>
+          <hr/>
+          <p id="filterDescription">
+            FILTRAR TUITS POR TÓPICO:
+          </p>
+          <Selector
+            chosenCategory={category}
+            onClickCallback={changeCategory}
+          />
+        </div>
+        <div></div>
+        {renderScaffolds()}
       </div>
     </div>
   );

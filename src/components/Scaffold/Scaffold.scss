@@ -1,23 +1,17 @@
 @import '../../utils/variables';
 
-#scrollableDiv {
-  height: 200;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-}
-
 #tower-left {
   background-color: $left-color-primary;
   text-align: left;
-  // border-color: $left-color-secondary;
 
   #name {
     color: white;
     font-size: 35px;
     padding-left: 20px;
     padding-top: 30px;
-    font-style: italic;
+    font-style: normal;
+    font-weight: bold;
+    font-family: $left-font;
   }
 }
 
@@ -31,6 +25,8 @@
     font-size: 35px;
     padding-right: 20px;
     padding-top: 30px;
-    font-style: italic;
+    font-style: normal;
+    font-weight: bold;
+    font-family: $right-font;
   }
 }

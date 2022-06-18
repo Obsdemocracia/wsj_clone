@@ -19,7 +19,7 @@ export const CATEGORIES = {
 const Navbar = ({ chosenCategory, onClickCallback }) => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand navbar-light bg-light" >
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="nav justify-content-center">

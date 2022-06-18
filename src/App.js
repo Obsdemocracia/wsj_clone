@@ -54,7 +54,7 @@ function App() {
                 leaning="left"
                 filter={category}
               />
-              <br/>
+              <br />
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12 col-12">
               <Scaffold
@@ -63,7 +63,7 @@ function App() {
                 leaning="right"
                 filter={category}
               />
-              <br/>
+              <br />
             </div>
           </div>
         </>
@@ -92,7 +92,7 @@ function App() {
                 pública del Observatorio de la Democracia de la Universidad de los Andes inspirado en la
                 siguiente <a href="https://graphics.wsj.com/blue-feed-red-feed/#/president-trump">página web</a>. Encuentre
                 el código del proyecto <a href="https://github.com/Obsdemocracia/wsj_clone">aquí</a>.
-                <hr/>
+                <hr />
                 <h6> Equipo: </h6>
                 <ul>
                   <li>
@@ -120,7 +120,7 @@ function App() {
               </Modal.Body>
             </Modal>
           </div>
-          <hr/>
+          <hr />
         </div>
         <div className="row mb-3">
           <p>
@@ -130,13 +130,13 @@ function App() {
             Revisar las posturas de quienes probablemente serían bancada de gobierno muestra aquellas políticas que
             tendrían mayor posibilidad de concretarse en los próximos cuatro años.
           </p>
-          <hr/>
+          <hr />
           <p>
             Esta herramienta muestra los tuits que publicaron entre el 12 de enero y el 29 de mayo de 2022 los
             senadores electos al Congreso de la República. Los tuits y retuits están divididos de acuerdo con temáticas más
-            relevantes en la campaña. Ellos son muestra de las agendas que promovieron y con las que fueron elegidos. 
+            relevantes en la campaña. Ellos son muestra de las agendas que promovieron y con las que fueron elegidos.
           </p>
-          <hr/>
+          <hr />
           <p id="filterDescription">
             FILTRAR TUITS POR TÓPICO:
           </p>

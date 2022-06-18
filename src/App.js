@@ -85,7 +85,7 @@ function App() {
             ¿Qué dijeron en Twitter los senadores electos que cantaron su apoyo en la 2a. vuelta presidencial?
           </h2>
           <div id="credits">
-            <span> HECHO POR GRUPO </span> <span id="groupName" onClick={handleShow}> POLÍTICA & DATOS </span>
+            <span> HECHO POR GRUPO </span> <span id="groupName" onClick={handleShow}> #Política&Redes </span>
             <Modal show={show} onHide={handleClose}>
               <Modal.Body>
                 Este ejercicio fue realizado por el semillero de ciencia de datos para el análisis de opinión

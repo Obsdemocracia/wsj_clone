@@ -1,12 +1,16 @@
 button {
-  border: 1px;
-  margin: 10px;
+  font-size: 4px;
+  color: aqua;
 }
 button .slate {
-  background-color: yellow;
+  background-color: white;
+  border-radius: 5px;
   color: black;
+  font-size: 13px;
 }
 button .highlighted {
   background-color: black;
+  border-radius: 10px;
   color: white;
+  font-size: 13px;
 }/*# sourceMappingURL=Category.css.map */

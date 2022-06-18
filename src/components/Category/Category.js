@@ -1,25 +1,12 @@
 import React from 'react';
+import { CATEGORIES } from '../../utils/constants';
 import './Category.scss';
 
-export const CATEGORIES = {
-  'genero': 'Género',
-  'paz': 'Paz',
-  'protesta': 'Protesta',
-  'tributaria': 'Reforma tributaria',
-  'mineroenergetico': 'Energía',
-  'instituciones y democracia': 'Democracia',
-  'seguridad social': 'Seguridad social',
-  'venezuela': 'Venezuela',
-  'corrupcion': 'Corrupción',
-  'educacion': 'Educación',
-  'pobreza y desigualdad': 'Pobreza'
-};
-
-const Category = ( name, onClickCallback, highlighted ) => {
+const Category = ({ name, highlighted, onClickCallback }) => {
   // Here we decide if the button shall be highlighted or not
   let className = 'slate';
 
-  if (highlighted == true) {
+  if (highlighted === true) {
     className = 'highlighted';
   }
 
@@ -30,7 +17,7 @@ const Category = ( name, onClickCallback, highlighted ) => {
         onClick={onClickCallback}
         className={className}
       >
-        CATEGORY
+        {CATEGORIES[name].toUpperCase()}
       </button>
     </>
   );

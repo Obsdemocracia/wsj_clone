@@ -6,19 +6,20 @@
   overflow: auto;
   display: flex;
   flex-direction: column;
-  margin-left: 50px;
-  border-width: 1px;
-  border-style: solid;
 }
 
 #scrollableDiv-left {
   @extend .scaffold-body;
   background-color: $left-color-primary;
   text-align: left;
-  border-color: $left-color-secondary;
+  // border-color: $left-color-secondary;
 
   h4 {
     color: white;
+    font-size: 35px;
+    padding-left: 20px;
+    padding-top: 30px;
+    font-style: italic;
   }
 }
 
@@ -26,9 +27,13 @@
   @extend .scaffold-body;
   background-color: $right-color-primary;
   text-align: right;
-  border-color: $left-color-secondary;
+  // border-color: $left-color-secondary;
 
   h4 {
     color: #2A3D59;
+    font-size: 35px;
+    padding-right: 20px;
+    padding-top: 30px;
+    font-style: italic;
   }
 }

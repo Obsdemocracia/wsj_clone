@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 
 import Scaffold from './components/Scaffold/Scaffold';
 import Navbar from './components/Navbar/Navbar';
-import { CATEGORIES } from './components/Category/Category';
+import { CATEGORIES } from './utils/constants';
 import './App.scss';
 
 function App() {
 
   const [data, setData] = useState([]);
-  const [chosenCategory, chooseCategory] = useState(Object.keys(CATEGORIES)[0]);
+  const [category, setCategory] = useState(Object.keys(CATEGORIES)[0]);
 
   const changeCategory = event => {
-    chooseCategory(event.target.id);
+    setCategory(event.target.id);
   };
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function App() {
           <div className="col-6 px-1">
             <Scaffold
               data={leftData}
-              filter={chosenCategory}
+              filter={category}
               title="PETRO"
               leaning="left"
             />
@@ -48,7 +48,7 @@ function App() {
           <div className="col-6 px-1">
             <Scaffold
               data={rightData}
-              filter={chosenCategory}
+              filter={category}
               title="RODOLFO"
               leaning="right"
             />
@@ -74,8 +74,8 @@ function App() {
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
               <Navbar
-                chosenCategory={chosenCategory}
-                changeCategory={changeCategory}
+                chosenCategory={category}
+                onClick={changeCategory}
               />
             </div>
           </nav>

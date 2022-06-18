@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Navbar.scss';
 import Category from '../Category/Category';
 
-import { CATEGORIES } from '../Category/Category';
+export const CATEGORIES = {
+  'genero': 'Género',
+  'paz': 'Paz',
+  'protesta': 'Protesta',
+  'tributaria': 'Reforma tributaria',
+  'mineroenergetico': 'Energía',
+  'instituciones y democracia': 'Democracia',
+  'seguridad social': 'Seguridad social',
+  'venezuela': 'Venezuela',
+  'corrupcion': 'Corrupción',
+  'educacion': 'Educación',
+  'pobreza y desigualdad': 'Pobreza'
+};
 
-// Pending: just for readability, nothing else
-const Navbar = ( chosenCategory, onClickCallback ) => {
-
+const Navbar = ({ chosenCategory, onClickCallback }) => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -16,7 +26,7 @@ const Navbar = ( chosenCategory, onClickCallback ) => {
               {Object.keys(CATEGORIES).map((category, idx) => {
                 let highlighted = false;
 
-                if (category == chosenCategory) {
+                if (category === chosenCategory) {
                   highlighted = true;
                 }
 
@@ -24,8 +34,8 @@ const Navbar = ( chosenCategory, onClickCallback ) => {
                   <li key={idx} className="nav-item">
                     <Category
                       name={category}
-                      onClickCallback={onClickCallback}
                       highlighted={highlighted}
+                      onClickCallback={onClickCallback}
                     />
                   </li>
                 );

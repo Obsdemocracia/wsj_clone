@@ -49,7 +49,7 @@ const Scaffold = ({ data, filter, title, leaning }) => {
             <h4> {title} </h4>
             {tweets.map((tweet, idx) => {
               return (
-                <div className='px-5 py-1' key={idx}>
+                <div className='px-5 py-1 tweet' key={idx}>
                   <TwitterTweetEmbed tweetId={tweet.id}/>
                 </div>
               );

@@ -6,7 +6,7 @@ import shuffle from '../../utils/shuffle';
 import './Scaffold.scss';
 
 const Scaffold = ({ data, title, leaning, filter }) => {
-  const PAGE_SIZE = 7;
+  const PAGE_SIZE = 6;
   
   const [tweets, setTweets] = useState([]);
 

@@ -1,20 +1,7 @@
 import React from 'react';
 import './Selector.scss';
 import Category from '../Category/Category';
-
-export const CATEGORIES = {
-  'genero': 'Género',
-  'paz': 'Paz',
-  'protesta': 'Protesta',
-  'tributaria': 'Reforma tributaria',
-  'mineroenergetico': 'Energía',
-  'instituciones y democracia': 'Democracia',
-  'seguridad social': 'Seguridad social',
-  'venezuela': 'Venezuela',
-  'corrupcion': 'Corrupción',
-  'educacion': 'Educación',
-  'pobreza y desigualdad': 'Pobreza'
-};
+import { CATEGORIES } from '../../utils/constants';
 
 const Navbar = ({ chosenCategory, onClickCallback }) => {
   return (

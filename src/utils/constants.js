@@ -9,5 +9,6 @@ export const CATEGORIES = {
   'venezuela': 'Venezuela',
   'corrupcion': 'Corrupción',
   'educacion': 'Educación',
-  'pobreza y desigualdad': 'Pobreza'
+  'pobreza y desigualdad': 'Pobreza',
+  'contrincante': 'Contrincante'
 };

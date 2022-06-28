@@ -1,53 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import shuffle from '../../utils/shuffle';
+import { FixedSizeList as List } from 'react-window';
 
 import './Scaffold.scss';
 
-const Scaffold = ({ data, title, leaning, filter }) => {
-  const PAGE_SIZE = 6;
-  
-  const [tweets, setTweets] = useState([]);
+const Scaffold = ({ data, title, leaning }) => {
+    
+  const Tweet = ({ data, index }) => {
+    const tweetId = data[index]['id'];
 
-  useEffect(() => {
-    shuffle(data);
-    setTweets(data.slice(0, PAGE_SIZE));
-  }, [filter]);
-
-  const getMoreTweets = () => {
-    setTweets(data.slice(0, tweets.length + PAGE_SIZE));
+    return (
+      <div className='px-5 py-1' key={index}>
+        <TwitterTweetEmbed tweetId={tweetId} key={tweetId}/>
+      </div>
+    );
   };
-  
+
   const renderTweets = () => {
-    if (tweets.length > 0) {
-      return(
-        <InfiniteScroll
-          dataLength={tweets.length}
-          next={getMoreTweets}
-          style={{
-            display: 'flex',
-            flexDirection: 'column'
-          }}
-          hasMore={true}
-          loader={<p> Cargando tweets </p>}
-          scrollableTarget="scrollableDiv"
-        >
-          {tweets.map((tweet, idx) => {
-            let tweetId = tweet['id'];
-
-            return (
-              <div className='px-5 py-1' key={idx}>
-                <TwitterTweetEmbed tweetId={tweetId} key={tweetId}/>
-              </div>
-            );
-          })}
-        </InfiniteScroll>
-      );
-    }
-
     return(
-      <p> Cargando tuits... </p>
+      <List
+        className="list"
+        height={700}
+        itemCount={data.length}
+        itemSize={200}
+        width={400}
+      >
+        {Tweet}
+      </List>
     );
   };
 

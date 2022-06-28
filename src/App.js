@@ -5,6 +5,8 @@ import Selector from './components/Selector/Selector';
 import { CATEGORIES } from './utils/constants';
 import './App.scss';
 
+import shuffle from './utils/shuffle';
+
 import Modal from 'react-bootstrap/Modal';
 
 function App() {
@@ -41,8 +43,8 @@ function App() {
 
   function renderScaffolds() {
     if (leftData.length > 0 && rightData.length > 0) {
-      const leftFiltered = leftData.filter(element => element[category] === 1);
-      const rightFiltered = rightData.filter(element => element[category] === 1);
+      const leftFiltered = shuffle(leftData.filter(element => element[category] === 1));
+      const rightFiltered = shuffle(rightData.filter(element => element[category] === 1));
 
       return (
         <>

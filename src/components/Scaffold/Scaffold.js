@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
 import { FixedSizeList as List } from 'react-window';
 

@@ -7,6 +7,8 @@ import './App.scss';
 
 import Modal from 'react-bootstrap/Modal';
 
+const fetchURL = 'https://gist.githubusercontent.com/favalosdev/3b01fd12b9779b8ca02910c54e6780e2/raw/8909e6f6377c734d21be6880fea1139b213896dc/tweetsV5.json';
+
 function App() {
 
   const [leftData, setLeftData] = useState([]);
@@ -23,7 +25,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetch('https://obsdemocracia.s3.amazonaws.com/tweetsv5.json')
+    fetch(fetchURL)
       .then((response) => {
         response.json()
           .then((data) => {
